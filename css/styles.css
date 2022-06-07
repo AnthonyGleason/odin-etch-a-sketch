@@ -2,3 +2,50 @@
     margin: 0;
     padding: 0;
 }
+html,
+body{
+    min-height: 0;
+    height: 100%;
+}
+body{
+    background-color: rgba(255, 131, 228, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.square{
+    border-style: solid;
+    border-width: 0.1em;
+    border-color: black;
+    display: flex;
+    flex-grow: 1;
+}
+.squareEnabled{
+    background-color: black;
+}
+.row{
+    display: flex;
+    flex-grow: 1;
+}
+#etchGrid{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    height: 50em;
+    width: 50em;
+}
+
+/* Debugging code
+#footer{
+    background-color: red;
+}
+#etchGrid{
+    background-color: aqua;
+}
+.row{
+    border-style: solid;
+    border-color: red;
+}
+body{
+    background-color:beige;
+}
