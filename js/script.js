@@ -1,10 +1,12 @@
 const etchGrid= document.querySelector("#etchGrid");
+const clearGridButton = document.querySelector("#clearGridButton");
+const changeGridSizeButton = document.querySelector("#changeGridSizeButton");
+let gridDivs = etchGrid.querySelectorAll(".square");
 let row= document.createElement("div");
 let square = document.createElement("div");
 let gridSquares=16;
 
 let toggleSquare = function (gridDivs){
-    //change add to toggle for removeable squares
     gridDivs.classList.add("squareEnabled");
    
 }
@@ -21,25 +23,45 @@ let createGrid = function (gridSquares){
     }
 }
 
+let removeGrid = function (){
+    //need way to remove grid
+    for (let i=0;i<gridSquares;i++){
+        rowAll = etchGrid.querySelectorAll(".row");
+        rowAll.forEach(rowAll => {
+            rowAll.remove();
+        })
+    }
+}
+
 let addSquareListeners = function (){
-    const gridDivs = etchGrid.querySelectorAll(".square");
+    gridDivs = etchGrid.querySelectorAll(".square");
     gridDivs.forEach(gridDivs => {
         gridDivs.classList.add("square");
-        gridDivs.addEventListener('click', () => {
-            toggleSquare(gridDivs);
-        })
-        gridDivs.addEventListener('dragenter', () => {
+        gridDivs.addEventListener('mouseover', () => {
             toggleSquare(gridDivs);
         })
     });
 }
+
+let clearGrid = function (){
+    gridDivs = etchGrid.querySelectorAll(".square");
+    gridDivs.forEach(gridDivs => {
+        gridDivs.classList.remove("squareEnabled");
+    });
+}
+
+let changeGridSize = function(){
+    removeGrid(); 
+    gridSquares=prompt("Enter number of squares");
+    createGrid(gridSquares);
+    addSquareListeners();
+}
+
+let addButtons = function (){
+    clearGridButton.addEventListener('click', () => {clearGrid()});
+    changeGridSizeButton.addEventListener('click', () => {changeGridSize()});    
+}
+//Starts webpage with default grid
 createGrid(gridSquares);
 addSquareListeners();
-
-
-/* Missing functionality:
--eraser
--change number of squares;
--color
--clear squares
-*/
+addButtons();
