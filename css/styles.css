@@ -20,9 +20,6 @@ body{
     display: flex;
     flex-grow: 1;
 }
-.squareEnabled{
-    background-color: black;
-}
 .row{
     display: flex;
     flex-grow: 1;
