@@ -6,13 +6,13 @@ let gridDivs = etchGrid.querySelectorAll(".square");
 let row= document.createElement("div");
 let square = document.createElement("div");
 let gridSquares=16;
-let colorfulPen=false;
+let colorfulPen=1;
+let colorBlackCounter=0.1;
 
 let toggleSquare = function (gridDivs){
     switch (colorfulPen){
-        case true:
+        case 0:
             let randomNumber= Math.floor(Math.random()*7+1);
-            console.log(randomNumber);
             switch (randomNumber){
                 case 1:
                     gridDivs.style.backgroundColor="#b0cece";
@@ -37,9 +37,17 @@ let toggleSquare = function (gridDivs){
                     break;
             }
             break;
-        case false:
-            gridDivs.style.backgroundColor='black';
+        case 1:
+                gridDivs.style.backgroundColor="black";
+                break;
+        case 2:
+            //add 0.1 opacity of black everytime
+            if (colorBlackCounter > 1)
+                colorBlackCounter=0.1;
+            gridDivs.style.backgroundColor="rgba(0,0,0,"+colorBlackCounter+")";
+            colorBlackCounter+=0.1;
             break;
+        
     }
 }
 let createGrid = function (gridSquares){
@@ -92,14 +100,10 @@ let changeGridSize = function(){
 }
 
 let toggleColorfulPen = function() {
-    switch(colorfulPen){
-        case true:
-            colorfulPen = false;
-            break;
-        case false:
-            colorfulPen = true;
-            break;
-    } 
+    colorfulPen++;
+    if (colorfulPen==3){
+        colorfulPen=0;
+    }
 }
 let addButtons = function (){
     clearGridButton.addEventListener('click', () => {clearGrid()});
