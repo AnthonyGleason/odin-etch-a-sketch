@@ -94,7 +94,7 @@ let changeGridSize = function(){
     removeGrid();
     gridSquaresHeight=prompt("Enter a number of squares for the height of the grid.");
     while (gridSquaresHeight>100 && gridSquaresHeight>0){
-        gridSquaresWidth=prompt("Error: Enter a number greater than 0 and less than 100")
+        gridSquaresHeight=prompt("Error: Enter a number greater than 0 and less than 100")
     }
     gridSquaresWidth=prompt("Enter a number of squares for the width of the grid.");
     while (gridSquaresWidth>100 && gridSquaresWidth>0){
