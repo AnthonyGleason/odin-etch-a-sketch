@@ -82,8 +82,11 @@ let clearGrid = function (){
 }
 
 let changeGridSize = function(){
-    removeGrid(); 
-    gridSquares=prompt("Enter number of squares");
+    removeGrid();
+    gridSquares=prompt("Enter a number");
+    while (gridSquares>100 && gridSquares>0){
+        gridSquares=prompt("Error: Enter a number greater than 0 and less than 100")
+    }
     createGrid(gridSquares);
     addSquareListeners();
 }
