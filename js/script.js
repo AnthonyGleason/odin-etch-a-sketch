@@ -5,7 +5,8 @@ const toggleColorfulPenButton = document.querySelector('#colorfulPen');
 let gridDivs = etchGrid.querySelectorAll(".square");
 let row= document.createElement("div");
 let square = document.createElement("div");
-let gridSquares=16;
+let gridSquaresHeight = 16;
+let gridSquaresWidth = 16;
 let colorfulPen=1;
 let colorBlackCounter=0.1;
 
@@ -50,12 +51,12 @@ let toggleSquare = function (gridDivs){
         
     }
 }
-let createGrid = function (gridSquares){
-    for (let i=0;i<gridSquares;i++){
+let createGrid = function (gridSquaresHeight,gridSquaresWidth){
+    for (let i=0;i<gridSquaresHeight;i++){
     row = document.createElement("div");
     etchGrid.appendChild(row);
     row.classList.add("row");
-        for (j=0;j<gridSquares;j++){
+        for (j=0;j<gridSquaresWidth;j++){
             square = document.createElement("div");
             row.appendChild(square);
             square.classList.add("square");
@@ -65,7 +66,7 @@ let createGrid = function (gridSquares){
 
 let removeGrid = function (){
     //need way to remove grid
-    for (let i=0;i<gridSquares;i++){
+    for (let i=0;i<gridSquaresHeight;i++){
         rowAll = etchGrid.querySelectorAll(".row");
         rowAll.forEach(rowAll => {
             rowAll.remove();
@@ -85,17 +86,21 @@ let addSquareListeners = function (){
 
 let clearGrid = function (){
     removeGrid();
-    createGrid(gridSquares);
+    createGrid(gridSquaresHeight,gridSquaresWidth);
     addSquareListeners();
 }
 
 let changeGridSize = function(){
     removeGrid();
-    gridSquares=prompt("Enter a number");
-    while (gridSquares>100 && gridSquares>0){
-        gridSquares=prompt("Error: Enter a number greater than 0 and less than 100")
+    gridSquaresHeight=prompt("Enter a number of squares for the height of the grid.");
+    while (gridSquaresHeight>100 && gridSquaresHeight>0){
+        gridSquaresWidth=prompt("Error: Enter a number greater than 0 and less than 100")
     }
-    createGrid(gridSquares);
+    gridSquaresWidth=prompt("Enter a number of squares for the width of the grid.");
+    while (gridSquaresWidth>100 && gridSquaresWidth>0){
+        gridSquaresWidth=prompt("Error: Enter a number greater than 0 and less than 100")
+    }
+    createGrid(gridSquaresHeight,gridSquaresWidth);
     addSquareListeners();
 }
 
@@ -111,6 +116,6 @@ let addButtons = function (){
     toggleColorfulPenButton.addEventListener('click' , () => {toggleColorfulPen()})
 }
 //Starts webpage with default grid
-createGrid(gridSquares);
+createGrid(gridSquaresHeight,gridSquaresWidth);
 addSquareListeners();
 addButtons();
